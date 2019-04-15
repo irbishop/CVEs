@@ -1,6 +1,6 @@
 ### CVE-2019-9955
-- **Title**:
-- **Disclosure Date**:
+- **Title**: Reflected Cross Site Scripting on Login Page of Zyxel devices
+- **Disclosure Date**: 15 Apr 2019
 
 ### CVE-2019-10717
 - **Title**:
