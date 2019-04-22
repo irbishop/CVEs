@@ -25,3 +25,7 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 ### CVE-2019-10721
 - **Title**:
 - **Disclosure Date**:
+
+### CVE-2019-11392
+- **Title**:
+- **Disclosure Date**:
