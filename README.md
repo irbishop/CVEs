@@ -15,12 +15,12 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Disclosure Date**:
 
 ### CVE-2019-10719
-- **Title**:
-- **Disclosure Date**:
+- **Title**: BlogEngine.NET Directory Traversal in File Upload / Remote Code Execution
+- **Disclosure Date**: 17 Jun 2019
 
 ### CVE-2019-10720
-- **Title**:
-- **Disclosure Date**:
+- **Title**: BlogEngine.NET Directory Traversal in theme cookie / Remote Code Execution
+- **Disclosure Date**: 17 Jun 2019
 
 ### CVE-2019-10721
 - **Title**:
