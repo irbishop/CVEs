@@ -22,13 +22,9 @@ The issue was identified during a network layer penetration test performed by Se
 
 ![](./login.png)
 
-<pagebreak></pagebreak>
-
-Zyxel documentation was used to determine valid parameters (including *web_portal_html_guide.pdf* [<ftp://ftp.zyxel.it/guide/hotspot/uag2100_4100_5100_web_portal_html_guide.pdf>], as shown below ).
+Zyxel documentation was used to determine valid parameters (including [web_portal_html_guide.pdf](ftp://ftp.zyxel.it/guide/hotspot/uag2100_4100_5100_web_portal_html_guide.pdf), as shown below ).
 
 ![](./access_flow.png)
-
-<pagebreak></pagebreak>
 
 A request such as:
 
