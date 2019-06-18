@@ -2,7 +2,7 @@
 
 A collection of issues I identified and the associated CVE.  Vendors have been notified and given ample time to develop/release patches.
 
-### CVE-2019-9955
+### [CVE-2019-9955](2019-9955/README.md)
 - **Title**: Reflected Cross Site Scripting on Login Page of Zyxel devices
 - **Disclosure Date**: 15 Apr 2019
 
@@ -18,7 +18,7 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Title**: BlogEngine.NET Directory Traversal in File Upload / Remote Code Execution
 - **Disclosure Date**: 17 Jun 2019
 
-### CVE-2019-10720
+### [CVE-2019-10720](2019-10720/README.md)
 - **Title**: BlogEngine.NET Directory Traversal in theme cookie / Remote Code Execution
 - **Disclosure Date**: 17 Jun 2019
 
