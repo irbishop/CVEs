@@ -14,7 +14,7 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Title**:
 - **Disclosure Date**:
 
-### [CVE-2019-10719](2019-10719/2019-10719.md)
+### [CVE-2019-10719](2019-10719/README.md)
 - **Title**: BlogEngine.NET Directory Traversal in File Upload / Remote Code Execution
 - **Disclosure Date**: 17 Jun 2019
 
