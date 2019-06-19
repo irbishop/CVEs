@@ -76,7 +76,7 @@ $RHOST - - [01/Apr/2019:16:34:40 -0600] "GET /EX?;%20for%2016-bit%20app%20suppor
 
 ## Exploit
 
-* <./exploit.py> 
+* [exploit](exploit.py) 
 
 Requests the contents of specified files (or `C:/Windows/win.ini` by default). It then writes the files to the current folder:
 
