@@ -10,9 +10,9 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Title**:
 - **Disclosure Date**:
 
-### CVE-2019-10718
-- **Title**:
-- **Disclosure Date**:
+### [CVE-2019-10718](2019-10718/README.md)
+- **Title**: BlogEngine.NET pingback.axd XXE
+- **Disclosure Date**: 19 Jun 2019
 
 ### [CVE-2019-10719](2019-10719/README.md)
 - **Title**: BlogEngine.NET Directory Traversal in File Upload / Remote Code Execution
@@ -26,6 +26,6 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Title**:
 - **Disclosure Date**:
 
-### CVE-2019-11392
-- **Title**:
-- **Disclosure Date**:
+### [CVE-2019-11392](2019-11392/README.md)
+- **Title**: BlogEngine.NET syndication.axd XXE
+- **Disclosure Date**: 19 Jun 2019
