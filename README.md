@@ -6,9 +6,9 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Title**: Reflected Cross Site Scripting on Login Page of Zyxel devices
 - **Disclosure Date**: 15 Apr 2019
 
-### CVE-2019-10717
-- **Title**:
-- **Disclosure Date**:
+### [CVE-2019-10717](2019-10717/README.md)
+- **Title**: BlogEngine.NET Directory Traversal / Content Listing
+- **Disclosure Date**: 24 Jun 2019
 
 ### [CVE-2019-10718](2019-10718/README.md)
 - **Title**: BlogEngine.NET pingback.axd XXE
@@ -22,9 +22,9 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 - **Title**: BlogEngine.NET Directory Traversal in theme cookie / Remote Code Execution
 - **Disclosure Date**: 17 Jun 2019
 
-### CVE-2019-10721
-- **Title**:
-- **Disclosure Date**:
+### [CVE-2019-10721](2019-10721/README.md)
+- **Title**: BlogEngine.NET Unvalidated redirect login page
+- **Disclosure Date**: 24 Jun 2019
 
 ### [CVE-2019-11392](2019-11392/README.md)
 - **Title**: BlogEngine.NET syndication.axd XXE
