@@ -36,7 +36,6 @@ A request to `/api/filemanager?path=%2F..%2f..%2f` shows the contents of the web
 The content of additional directories will be revealed by tampering with the **path** parameter:
 
 ~~~{.json command="https://$HOST/api/filemanager?path=%2F..%2f..%2fContent"}
-<r:snip></r:snip>
   {
     "IsChecked": false,
     "SortOrder": 15,
