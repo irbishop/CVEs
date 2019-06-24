@@ -2,13 +2,13 @@ A directory traversal, CVE-2019-10717, was identified on BlogEngine.NET applicat
 
 ## Vendor Patch
 
-* <https://github.com/rxtur/BlogEngine.NET/releases>
+* <https://github.com/rxtur/BlogEngine.NET/releases/tag/v3.3.8.0>
 
 ## Timeline
 
 * Identified: 30 Mar 2019
 * Initial Developer Contact: 31 Mar 2019
-* Issue Disclosed: 19 Jun 2019
+* Issue Disclosed: 24 Jun 2019
 
 ## Description
 

@@ -8,7 +8,7 @@ A unvalidated redirect, CVE-2019-10721, exists on BlogEngine.NET versions 3.3.7 
 
 * Identified: 30 Mar 2019
 * Initial Developer Contact: 31 Mar 2019
-* Issue Disclosed: 19 Jun 2019
+* Issue Disclosed: 24 Jun 2019
 
 ## Description
 
