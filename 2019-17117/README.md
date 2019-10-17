@@ -9,7 +9,7 @@ A SQL Injection vulnerability, CVE-2019-17117, was identified on `WiKID Systems 
 * 26 Sep 2019 - Issue discovered on `WiKID Systems 2FA Enterprise Server 4.2.0-b2032`
 * 29 Sep 2019 - Issue disclosed to WiKID Systems
 * 09 Oct 2019 - Issue confirmed by WiKID Systems, Patch released
-* XXX Oct 2019 - Public Disclosure
+* 16 Oct 2019 - Public Disclosure
 
 ## Description
 
@@ -18,7 +18,7 @@ Reviewing the source code for **processPref.jsp** revealed the following code bl
 ~~~
 121     } else if (request.getParameter("action").equals("Update")) {
 122         // need to do error checking here.
-123         sql = "SELECT key FROM parms1to1 where key='" + <r:b>request.getParameter("key")</r:b> + "'";
+123         sql = "SELECT key FROM parms1to1 where key='" + request.getParameter("key") + "'";
 124         ResultSet result = stat.executeQuery(sql);
 125         if (!result.next()) {
 126     %>

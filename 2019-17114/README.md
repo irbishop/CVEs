@@ -9,7 +9,7 @@ A stored and reflected cross-site scripting vulnerability, CVE-2019-17114, was i
 * 26 Sep 2019 - Issue discovered on `WiKID Systems 2FA Enterprise Server 4.2.0-b2032`
 * 29 Sep 2019 - Issue disclosed to WiKID Systems
 * 09 Oct 2019 - Issue confirmed by WiKID Systems, Patch released
-* XXX Oct 2019 - Public Disclosure
+* 16 Oct 2019 - Public Disclosure
 
 ## Description
 
@@ -17,9 +17,9 @@ The source code for **userPreregistrationjsp** reveals the following logic that 
 
 ~~~
 272                         sb.append("</font></td><td style=\"padding: 5px;\"><font face=\"courier\" size=\"-1\">")
-273                         .append(<r:b>rs.getString("pre_registration_code")</r:b>)
+273                         .append(rs.getString("pre_registration_code"))
 274                         .append("</font></td><td style=\"padding: 5px;\"><font face=\"courier\" size=\"-1\">")
-275                         .append(<r:b>URLDecoder.decode(rs.getString("name"),"UTF-8")</r:b>)
+275                         .append(URLDecoder.decode(rs.getString("name"),"UTF-8"))
 276                         .append("</font></td></tr>");
 ~~~
 

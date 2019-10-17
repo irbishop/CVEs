@@ -17,8 +17,8 @@ The source for **searchDevices.jsp** reveals the `buildSearchWhereClause`.  The 
 ~~~
 191     private void buildSearchWhereClause(HttpServletRequest request) {
 192         where = "";
-193         <r:b>String uid=request.getParameter("uid");</r:b>
-194         <r:b>String domain=request.getParameter("domain");</r:b>
+193         String uid=request.getParameter("uid");
+194         String domain=request.getParameter("domain");
 ~~~
 
 ### domain parameter
@@ -27,7 +27,7 @@ If the <var>domain</var> parameter is set and <var>uid</var> parameter is not se
 
 ~~~
 203         }else if(!domain.equals("0") && uid==null){
-204             where="where domainid="+<r:var>domain</r:var>;
+204             where="where domainid="+domain;
 ~~~
 
 If the <var>uid</var> parameter is set, the <var>domain</var> parameter is included in a query thus allowing SQL injection here:
@@ -36,7 +36,7 @@ If the <var>uid</var> parameter is set, the <var>domain</var> parameter is inclu
 205         }else if(uid!=null){
 ...
 214             if(!domain.equals("0")){
-215                 where=where+" and domainid="+<r:var>domain</r:var>;
+215                 where=where+" and domainid="+domain;
 216             }
 217         }
 218     }
@@ -58,7 +58,7 @@ If the <var>uid</var> parameter is set, the logic drops down to following logic 
 207             String ask=uid.substring(uid.length()-1);
 208             if(ask!=null ){
 209 //                uid=uid.substring(0,uid.length()-1);
-210                 where="where RTRIM(LOWER(userid)) like LOWER('%"+<r:var>uid</r:var>+"%')";
+210                 where="where RTRIM(LOWER(userid)) like LOWER('%"+uid+"%')";
 211 //            }else{
 212 //                where="where RTRIM(LOWER(userid))=LOWER('"+uid+"')";
 213             }
