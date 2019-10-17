@@ -9,7 +9,7 @@ Multiple SQL Injection vulnerabilities, CVE-2019-17119, were identified on `WiKI
 * 26 Sep 2019 - Issue discovered on `WiKID Systems 2FA Enterprise Server 4.2.0-b2032`
 * 29 Sep 2019 - Issue disclosed to WiKID Systems
 * 09 Oct 2019 - Issue confirmed by WiKID Systems, Patch released
-* XXX Oct 2019 - Public Disclosure
+* 16 Oct 2019 - Public Disclosure
 
 ## Description
 
