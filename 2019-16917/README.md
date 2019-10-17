@@ -8,7 +8,7 @@ A SQL Injection vulnerability, CVE-2019-16917, was identified on `WiKID Systems 
 
 * 14 Sep 2019 - Issue discovered on `WiKID Systems 2FA Enterprise Server 4.2.0-b2032` and disclosed to WiKID Systems.
 * 26 Sep 2019 - Issue confirmed by WiKID Systems, Patch Released
-* XXX Oct 2019 - Public Disclosure
+* 16 Oct 2019 - Public Disclosure
 
 ## Description
 
