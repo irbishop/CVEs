@@ -29,3 +29,35 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 ### [CVE-2019-11392](2019-11392/README.md)
 - **Title**: BlogEngine.NET syndication.axd XXE
 - **Disclosure Date**: 19 Jun 2019
+
+### [CVE-2019-16917](2019-16917/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server searchDevices.jsp SQL Injection
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17114](2019-17114/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server userPreregistration.jsp Cross-site Scripting
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17115](2019-17115/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server Logs.jsp Unauthenticated Cross-site Scripting
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17116](2019-17116/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server groups.jsp Cross-site Scripting
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17117](2019-17117/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server processPref.jsp SQL Injection
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17118](2019-17118/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server Cross-site Request Forgery
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17119](2019-17119/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server Logs.jsp SQL Injection
+- **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2019-17120](2019-17116/README.md)
+- **Title**: WiKID Systems 2FA Enterprise Server adm_usrs.jsp Cross-site Scripting
+- **Disclosure Date**: 16 Oct 2019
