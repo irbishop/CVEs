@@ -61,3 +61,7 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 ### [CVE-2019-17120](2019-17116/README.md)
 - **Title**: WiKID Systems 2FA Enterprise Server adm_usrs.jsp Cross-site Scripting
 - **Disclosure Date**: 16 Oct 2019
+
+### [CVE-2020-5497](2020-5497/README.md)
+- **Title**: MITREid Connect header.tag/topbar.tag Cross-Site Scripting
+- **Disclosure Date**: 3 Jan 2020
