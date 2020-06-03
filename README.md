@@ -65,3 +65,19 @@ A collection of issues I identified and the associated CVE.  Vendors have been n
 ### [CVE-2020-5497](2020-5497/README.md)
 - **Title**: MITREid Connect header.tag/topbar.tag Cross-Site Scripting
 - **Disclosure Date**: 3 Jan 2020
+
+### [CVE-2020-11679](2020-11679/README.md)
+- **Title**: Castel NextGen DVR - Privilege Escalation
+- **Disclosure Date**: 3 Jun 2020
+
+### [CVE-2020-11680](2020-11680/README.md)
+- **Title**: Castel NextGen DVR - Authorization Bypass
+- **Disclosure Date**: 3 Jun 2020
+
+### [CVE-2020-11681](2020-11681/README.md)
+- **Title**: Castel NextGen DVR - Cleartext Credentials
+- **Disclosure Date**: 3 Jun 2020
+
+### [CVE-2020-11682](2020-11682/README.md)
+- **Title**: Castel NextGen DVR - CSRF
+- **Disclosure Date**: 3 Jun 2020
